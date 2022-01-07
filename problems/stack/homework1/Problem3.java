@@ -1,12 +1,12 @@
 package datastrucures.problems.stack.homework1;
 
 
-//Problem #2: Reverse subwords
-//â—? Develop: string reverse_subwords(string line)
-//â—? It takes a string of spaces, e.g. "abc d efg xy"
-//â—? Then reverse each subword â‡’ â€œcba d gfe yxâ€œ
-//â—? Find a stack-based idea
-
+//Problem #3: Reverse a number using stack
+//â— Implement a method that takes number >= 0 and reverse its digits using a
+//stack
+//â— int reverse_num(int num)
+//â— E.g. Input: 1234, Output: 4321
+//â— Find a stack-based idea
 
 class Stack<T> {
 
