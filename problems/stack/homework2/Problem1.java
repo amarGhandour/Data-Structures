@@ -1,12 +1,21 @@
 package datastrucures.problems.stack.homework2;
 
+//We are given an array asteroids of integers representing asteroids in a row.
+//
+//For each asteroid,the absolute value represents its size, and the sign represents its direction (positive meaning right,
+// negative meaning left). Each asteroid moves at the same speed.
+//
+//Find out the state of the asteroids after all collisions.
+//If two asteroids meet, the smaller one will explode. 
+//If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.
+
 class Stack<T> {
 
 	private Object[] data;
 	private static final int MAX = 1000;
 	private int top;
 
-	 Stack() { // memory O(n) - time O(n)
+	Stack() { // memory O(n) - time O(n)
 		this.top = -1;
 		this.data = new Object[MAX];
 	}
@@ -59,53 +68,51 @@ class Stack<T> {
 
 public class Problem1 {
 
+	public static void main(String[] args) throws Exception {
 
-		public static void main(String[] args) throws Exception {
+		int[] arr = { 10, 5, -2 };
+		int[] arr2 = asteroidCollision(arr);
 
-			int[] arr = {10, 5, -2};
-			int[] arr2 = asteroidCollision(arr);
-			
-			for (int i: arr2) {
-				System.out.print(i + " ");
-			}
-
-		}
-
-		public static int[] asteroidCollision(int[] astroides) throws Exception {
-
-			Stack<Integer> res = new Stack<Integer>();		
-			
-			for (int i = 0; i < astroides.length; i++ ) {
-				
-				int astroid = astroides[i];
-	            
-				boolean isExploded = false;
-				while(!res.isEmpty() && (int) res.peek() > 0 && astroid < 0) {
-					
-					if ((int) res.peek() < -astroid) {
-						res.pop();
-						continue;
-					}else if ((int) res.peek() == -astroid) {
-						res.pop();
-					}
-	                
-	                isExploded = true;
-						break;
-				}
-				
-				if (!isExploded) {
-					res.push(astroid);
-				}
-				
-			}
-	        
-	        
-	        int[] as = new int [res.size()];
-	        for (int i = res.size() - 1; i >= 0 ; i--){
-	            as[i] = (int) res.pop();
-	        }
-	        
-	        return as;
+		for (int i : arr2) {
+			System.out.print(i + " ");
 		}
 
 	}
+
+	public static int[] asteroidCollision(int[] astroides) throws Exception {
+
+		Stack<Integer> res = new Stack<Integer>();
+
+		for (int i = 0; i < astroides.length; i++) {
+
+			int astroid = astroides[i];
+
+			boolean isExploded = false;
+			while (!res.isEmpty() && (int) res.peek() > 0 && astroid < 0) {
+
+				if ((int) res.peek() < -astroid) {
+					res.pop();
+					continue;
+				} else if ((int) res.peek() == -astroid) {
+					res.pop();
+				}
+
+				isExploded = true;
+				break;
+			}
+
+			if (!isExploded) {
+				res.push(astroid);
+			}
+
+		}
+
+		int[] as = new int[res.size()];
+		for (int i = res.size() - 1; i >= 0; i--) {
+			as[i] = (int) res.pop();
+		}
+
+		return as;
+	}
+
+}
